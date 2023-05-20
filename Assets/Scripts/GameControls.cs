@@ -15,4 +15,13 @@ public class GameControls: MonoBehaviour
         StartCoroutine(CountTime());
         timerText = GameObject.Find("Score").GetComponent<Text>();
     }
+
+    IEnumerator CountTime()
+    {
+        yield return new WaitForSeconds(1f);
+        timerCount++;
+        timerText.text = "Score: " + timerCount;
+
+        StartCoroutine(CountTime());
+    }
 }
